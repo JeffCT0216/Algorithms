@@ -24,7 +24,6 @@ function shortestTimeframe (trans, amount) {
       let startAmount = isNaN(trans[start]) ? 0 : trans[start];
       total -= startAmount;
       start += 1;
-      // console.log('total and start in while loop', total, start, i);
     }
   }
   return timeframe;
