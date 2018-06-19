@@ -5,7 +5,7 @@ function wordCountEngine(document) {
   let order = 0;
   let wordOrder = {};
   for (let i = 0; i < wordArr.length; i++) {
-    let current = removePunctuation(wordArr[i]);
+    let current = wordArr[i].replace(/[^\w]/g, '').toLowerCase();
     if (!count[current] && current !== '') {
       count[current] = 1;
       result.push([current]);
@@ -17,20 +17,9 @@ function wordCountEngine(document) {
   }
   for (let j = 0; j < result.length; j++) {
     result[j][1] = `${count[result[j]]}`;
-  }
-             
+  }          
   return sorting(result, wordOrder);
 }
-
-  
-function removePunctuation(word) {    
-  let w = word.toLowerCase();
-  let result = '';
-  for (let char of w){
-    if (char >= 'a' && char <= 'z') result += char;     
-  }
-  return result;
-}  
 
 function sorting(arr, wordOrder) {
   return arr.sort(function(a, b) {
