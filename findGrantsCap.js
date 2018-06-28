@@ -1,15 +1,16 @@
 function findGrantsCap(grantsArray, newBudget) {
-  // your code goes here
   let underBudget = true;
   let numOfGrants = grantsArray.length;
   let avgBudget = newBudget/numOfGrants;
+  let i = 0;
   grantsArray.sort((a, b) => a - b);
-  while(underBudget && grantsArray.length > 1) {
+  while(underBudget && i < grantsArray.length) {
     underBudget = false;  
-    if (grantsArray[0] < avgBudget) {
-        newBudget -= grantsArray[0];
-        grantsArray = grantsArray.slice(1);
-        avgBudget = newBudget/grantsArray.length;
+    if (grantsArray[i] < avgBudget) {
+        newBudget -= grantsArray[i];
+        numOfGrants --;
+        avgBudget = newBudget/numOfGrants;
+        i++;
         underBudget = true;
     }  
   }
