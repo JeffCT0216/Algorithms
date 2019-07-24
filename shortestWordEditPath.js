@@ -28,11 +28,11 @@ function shortestWordEditPath(source, target, words) {
 }
 
 function compare(word1, word2) {
-  if (word1.length !== word2.length) return -1;
+  if (word1.length !== word2.length) return false;
   let counter = 0;
   for (let i = 0; i < word1.length; i++) {
     if (word1[i] !== word2[i]) counter++;
-    if (counter > 1) return -1;
+    if (counter > 1) return false;
   }
   return true;
 }
