@@ -5,6 +5,7 @@ function shortestWordEditPath(source, target, words) {
 	@param words: string[]
 	@return: integer
 	*/
+  if (source.length !== target.length) return -1;
   let counter = {};
   let queue = [source];
   let visited = new Set();
@@ -27,12 +28,11 @@ function shortestWordEditPath(source, target, words) {
 }
 
 function compare(word1, word2) {
+  if (word1.length !== word2.length) return -1;
   let counter = 0;
-  let longest = word1.length > word2.length ? word1.length : word2.length;
-  let lengthDiff = Math.abs(word1.length - word2.length);
-  if (lengthDiff > 1) return false;
-  for (let i = 0; i < longest; i++) {
+  for (let i = 0; i < word1.length; i++) {
     if (word1[i] !== word2[i]) counter++;
+    if (counter > 1) return -1;
   }
-  return counter === 1;
+  return true;
 }
